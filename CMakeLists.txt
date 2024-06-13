@@ -81,8 +81,8 @@ PROPERTIES
     GENERATED TRUE
     COMPILE_FLAGS ${fmasm}
 )
-add_library(ffi ${sources} ${asm})
+add_library(libffi ${sources} ${asm})
 set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /LTCG")
-target_compile_definitions(ffi PUBLIC "FFI_BUILDING")
-set_target_properties(ffi PROPERTIES PREFIX "lib")
-add_dependencies(ffi preprocess)
+target_compile_definitions(libffi PUBLIC "FFI_BUILDING")
+set_target_properties(libffi PROPERTIES PREFIX "lib")
+add_dependencies(libffi preprocess)
