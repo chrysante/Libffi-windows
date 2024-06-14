@@ -68,7 +68,6 @@ if (MSVC)
     )
 endif()
 
-target_include_directories(ffi PUBLIC "${bin}/include")
 configure_file("${inc}/ffi.h.in" "${bin}/include/ffi.h")
 configure_file("${inc}/fficonfig.h.in" "${bin}/include/fficonfig.h")
 configure_file("${inc}/ffitarget.h" "${bin}/include/ffitarget.h" COPYONLY)
@@ -82,6 +81,7 @@ PROPERTIES
     COMPILE_FLAGS ${fmasm}
 )
 add_library(ffi ${sources} ${asm})
+target_include_directories(ffi PUBLIC "${bin}/include")
 set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /LTCG")
 target_compile_definitions(ffi PUBLIC "FFI_BUILDING")
 set_target_properties(ffi PROPERTIES PREFIX "lib")
