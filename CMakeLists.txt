@@ -68,7 +68,7 @@ if (MSVC)
     )
 endif()
 
-include_directories("${bin}/include")
+target_include_directories(ffi PUBLIC "${bin}/include")
 configure_file("${inc}/ffi.h.in" "${bin}/include/ffi.h")
 configure_file("${inc}/fficonfig.h.in" "${bin}/include/fficonfig.h")
 configure_file("${inc}/ffitarget.h" "${bin}/include/ffitarget.h" COPYONLY)
