@@ -42,7 +42,7 @@ if (MSVC)
     if(HAVE_64BIT)
         set(TARGET X86_WIN64)
         set(HAVE_AS_X86_64_UNWIND_SECTION_TYPE 1)
-        set(sources "${sources}" "${src}/ffi64.c")
+        set(sources "${sources}" "${src}/ffiw64.c")
 
         configure_file("${src}/asm/win64.S" "${bin}/source/win64.S.i" COPYONLY)
         set(pre "${bin}/source/win64.S.i")
@@ -72,6 +72,7 @@ configure_file("${inc}/ffi.h.in" "${bin}/include/ffi.h")
 configure_file("${inc}/fficonfig.h.in" "${bin}/include/fficonfig.h")
 configure_file("${inc}/ffitarget.h" "${bin}/include/ffitarget.h" COPYONLY)
 configure_file("${inc}/ffi_common.h" "${bin}/include/ffi_common.h" COPYONLY)
+configure_file("${inc}/tramp.h" "${bin}/include/tramp.h" COPYONLY)
 
 set_source_files_properties(${sources} PROPERTIES LANGUAGE C)
 set_source_files_properties(${asm}
