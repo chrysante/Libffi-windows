@@ -85,6 +85,6 @@ PROPERTIES
 add_library(ffi ${sources} ${asm})
 target_include_directories(ffi PUBLIC "${bin}/include")
 set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /LTCG")
-target_compile_definitions(ffi PUBLIC "FFI_BUILDING" FFI_STATIC_BUILD)
+target_compile_definitions(ffi PUBLIC "FFI_BUILDING" FFI_STATIC_BUILD USE_DL_PREFIX)
 set_target_properties(ffi PROPERTIES PREFIX "lib")
 add_dependencies(ffi preprocess)

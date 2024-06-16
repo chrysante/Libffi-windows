@@ -693,7 +693,7 @@ extern "C" {
   maximum supported value of n differs across systems, but is in all
   cases less than the maximum representable value of a size_t.
 */
-__declspec(dllimport) void* dlmalloc(size_t);
+void* dlmalloc(size_t);
 
 /*
   free(void* p)
@@ -702,14 +702,14 @@ __declspec(dllimport) void* dlmalloc(size_t);
   It has no effect if p is null. If p was not malloced or already
   freed, free(p) will by default cause the current program to abort.
 */
-__declspec(dllimport) void  dlfree(void*);
+void  dlfree(void*);
 
 /*
   calloc(size_t n_elements, size_t element_size);
   Returns a pointer to n_elements * element_size bytes, with all locations
   set to zero.
 */
-__declspec(dllimport) void* dlcalloc(size_t, size_t);
+void* dlcalloc(size_t, size_t);
 
 /*
   realloc(void* p, size_t n)
@@ -733,8 +733,7 @@ __declspec(dllimport) void* dlcalloc(size_t, size_t);
   The old unix realloc convention of allowing the last-free'd chunk
   to be used as an argument to realloc is not supported.
 */
-
-__declspec(dllimport) void* dlrealloc(void*, size_t);
+void* dlrealloc(void*, size_t);
 
 /*
   memalign(size_t alignment, size_t n);
