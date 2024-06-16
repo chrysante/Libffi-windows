@@ -37,6 +37,7 @@ if (MSVC)
         "${src}/prep_cif.c"
         "${src}/raw_api.c"
         "${src}/types.c"
+        "${src}/dlmalloc.c"
     )
 
     if(HAVE_64BIT)
@@ -44,7 +45,7 @@ if (MSVC)
         set(HAVE_AS_X86_64_UNWIND_SECTION_TYPE 1)
         set(sources "${sources}" "${src}/ffiw64.c")
 
-        configure_file("${src}/asm/win64.S" "${bin}/source/win64.S.i" COPYONLY)
+        configure_file("${src}/win64.S" "${bin}/source/win64.S.i" COPYONLY)
         set(pre "${bin}/source/win64.S.i")
         set(asm "${bin}/source/win64.S")
         set(fmasm "/c /Cx /Fo")
@@ -84,6 +85,6 @@ PROPERTIES
 add_library(ffi ${sources} ${asm})
 target_include_directories(ffi PUBLIC "${bin}/include")
 set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} /LTCG")
-target_compile_definitions(ffi PUBLIC "FFI_BUILDING")
+target_compile_definitions(ffi PUBLIC "FFI_BUILDING" FFI_STATIC_BUILD)
 set_target_properties(ffi PROPERTIES PREFIX "lib")
 add_dependencies(ffi preprocess)
